@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /server
+Disallow: /assets-chunks
+Disallow: /node_modules
+Disallow: /src
+Disallow: /test
+Allow: /
+Allow: /
+Sitemap: https://ng.triangleargentina.com.ar/sitemap.xml
