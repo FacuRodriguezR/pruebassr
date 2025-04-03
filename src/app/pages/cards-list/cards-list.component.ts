@@ -2,18 +2,19 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit }
 import { AppService } from '../../services/app.service';
 import { map, Observable } from 'rxjs';
 import { CurrencyPipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Product } from '../../interfaces/models.interfaces';
 
 @Component({
   selector: 'app-cards-list',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './cards-list.component.html',
   styleUrl: './cards-list.component.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardsListComponent implements OnInit { 
 
-  products: any[] = [];
+  products: Product[] = [];
 
   appService = inject(AppService);
   route = inject(ActivatedRoute);
@@ -31,7 +32,7 @@ export class CardsListComponent implements OnInit {
 
   getProducts() {
     return this.appService.getProductAs().pipe(
-      map((data: any[]) => data.slice(0, 20))
+      map((data: Product[]) => data.slice(0, 20))
     ).subscribe(
       (filteredData) => {
         this.products = filteredData;

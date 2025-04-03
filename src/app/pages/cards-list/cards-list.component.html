@@ -11,7 +11,7 @@
               <h2 class="card-title">{{product.descripcion}}</h2>
               <p>{{product.precioahora | currency}}</p>
               <div class="card-actions justify-end">
-                <button class="btn btn-accent">Buy Now</button>
+                <button class="btn btn-accent" [routerLink]="['/product', product.idarticulo]">Buy Now</button>
               </div>
             </div>
         </div>
